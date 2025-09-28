@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { IconHome, IconUser, IconBriefcase } from "@tabler/icons-react";
 import { Tabs } from "@/components/navbar";
-import Link from "next/link";
+
 import { Roboto } from "next/font/google";
 import { Download } from "lucide-react";
 import { IconFolder } from "@tabler/icons-react";

@@ -22,7 +22,7 @@ export default function HomePage() {
   // Initialize canvas animation once component mounts
   useEffect(() => {
     initCanvasAnimation();
-  }, []);
+  }, [initCanvasAnimation]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
