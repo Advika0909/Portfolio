@@ -7,12 +7,20 @@ import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { initCanvasAnimation } from "@/components/bg";
 import "@/components/link.css";
 import "@/components/gmail.css";
+import Script from "next/script";
 
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["500"],
   style: "italic",
 });
+
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,6 +53,23 @@ export default function HomePage() {
   }
 
   return (
+    <>
+<Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-L8W8Y636NK"
+      />
+      <Script
+        id="ga-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L8W8Y636NK', { page_path: window.location.pathname });
+          `,
+        }}
+      />
     <div ref={headerRef} id="large-header" className="relative w-full min-h-screen overflow-hidden">
       {/* Background Canvas */}
       <canvas ref={canvasRef} id="demo-canvas" className="absolute top-0 left-0 w-full h-full z-0"></canvas>
@@ -159,5 +184,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
