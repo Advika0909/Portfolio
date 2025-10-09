@@ -17,10 +17,11 @@ const roboto = Roboto({
 
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag?: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
+
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
